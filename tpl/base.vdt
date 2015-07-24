@@ -1,0 +1,10 @@
+<div class="main">
+    <header ev-click={function() {alert('click header')}}>{title}</header>
+
+    <div class="body">
+        <a href="#/">home</a>
+        <a href="#/test">test</a>
+        <a href="#/detail">detail</a>
+        <b:body/>
+    </div>
+</div>

@@ -1,0 +1,11 @@
+var base = require('rvdt!tpl/base.vdt'),
+    self = this;
+
+<t:base title="测试页">
+    <b:body>
+        <div ev-click={function() {alert('click test body')}}>
+            <span class="test">test</span>
+            <p>Hi: {self.get('data').name}</p>
+        </div>
+    </b:body>
+</t:base>

@@ -1,0 +1,8 @@
+var base = require('rvdt!tpl/base.vdt');
+
+<t:base>
+    <b:body>
+        <aside>sidebar</aside>
+        <b:content />
+    </b:body>
+</t:base>

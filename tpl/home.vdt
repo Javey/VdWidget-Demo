@@ -1,0 +1,10 @@
+var base = require('rvdt!tpl/base.vdt');
+
+<t:base title="首页">
+    <b:body>
+        {parent()}
+        <div ev-click={function() {alert('click home body')}}>
+            <span>home</span>
+        </div>
+    </b:body>
+</t:base>
