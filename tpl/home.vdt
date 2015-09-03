@@ -1,10 +1,24 @@
-var base = require('rvdt!tpl/base.vdt');
+//var base = require('rvdt!tpl/base.vdt'),
+//    Animate = require('js/components/animate');
+var base = require('tpl/base'),
+    Animate = require('js/components/animate'),
+    AnimateGroup = require('js/components/animateGroup');
 
-<t:base title="首页">
+<t:base title="首页" key="home">
     <b:body>
         {parent()}
-        <div ev-click={function() {alert('click home body')}}>
-            <span>home</span>
-        </div>
+        <div ev-click={_.bind(this._click, this)}>{this.get('click')}</div>
+        <input type="text" ev-change={this.add.bind(this)} />
+        <AnimateGroup tagName="ul">{_.map(this.get('list'), function(item, index) {
+                if (item === 'aaaaaaaaaaaaaa') {
+                    return <li ev-click={this.remove.bind(this, item)}>test</li>
+                }
+                return <Animate tagName="li" ev-click={this.remove.bind(this, item)} key={item} transition="fade">{item}</Animate>
+            }, this)}</AnimateGroup>
+
+        <AnimateGroup>
+            {this.get('show') ? <Animate>show or hide {this.get('show') ? 'show' : 'hide'}</Animate> : null}
+        </AnimateGroup>
+        <div ev-click={this.toggle.bind(this)}>toggle</div>
     </b:body>
 </t:base>

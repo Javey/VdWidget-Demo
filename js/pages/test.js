@@ -1,4 +1,4 @@
-define(['vdwidget', 'rvdt!tpl/test.vdt', 'jquery'], function(VdWidget, template, $) {
+define(['vdwidget', 'tpl/test', 'jquery'], function(VdWidget, template, $) {
     return VdWidget.extend({
         template: template,
 

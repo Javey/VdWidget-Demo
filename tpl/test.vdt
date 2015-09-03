@@ -1,7 +1,8 @@
-var base = require('rvdt!tpl/base.vdt'),
+//var base = require('rvdt!tpl/base.vdt'),
+var base = require('tpl/base'),
     self = this;
 
-<t:base title="测试页">
+<t:base title="测试页" key="test">
     <b:body>
         <div ev-click={function() {alert('click test body')}}>
             <span class="test">test</span>

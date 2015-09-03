@@ -1,10 +1,19 @@
-<div class="main">
-    <header ev-click={function() {alert('click header')}}>{title}</header>
+var Animate = require('js/components/animate');
+var AnimateGroup = require('js/components/animateGroup');
 
-    <div class="body">
-        <a href="#/">home</a>
-        <a href="#/test">test</a>
-        <a href="#/detail">detail</a>
-        <b:body/>
-    </div>
-</div>
+<AnimateGroup>
+    <Animate class="main" key={key}>
+        <header tagName="header" transition="none">
+            {typeof showBack === 'undefined' ? null : <Animate transition="fade" class="back" tagName="span" key="back">back</Animate>}
+            <span key="title">{title}</span>
+        </header>
+
+        <div class="body">
+            <a href="#/">home</a>
+            <a href="#/test">test</a>
+            <a href="#/detail">detail</a>
+            <a href="#/readme">readme</a>
+            <b:body/>
+        </div>
+    </Animate>
+</AnimateGroup>

@@ -1,3 +1,7 @@
-<div>
-    infomation
-</div>
+var Animate = require('js/components/animate');
+var AnimateGroup = require('js/components/animateGroup');
+<AnimateGroup>
+    <Animate class="main readme" transition="fade">
+        infomation
+    </Animate>
+</AnimateGroup>

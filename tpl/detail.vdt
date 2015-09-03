@@ -1,10 +1,12 @@
-var column = require('rvdt!tpl/column.vdt');
+//var column = require('rvdt!tpl/column.vdt');
+var column = require('tpl/column');
 
-<t:column title="详情">
+<t:column title="详情" showBack={true}>
     <b:content>
         This is content for detail.
         {['1', '2', '3'].map(function(item) {
             return <div>{item}</div>
         })}
+        <div>{this.get('id')}</div>
     </b:content>
 </t:column>

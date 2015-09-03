@@ -11,6 +11,9 @@ define(['director', 'js/app/app'], function(Router, App) {
         },
         '/detail': function() {
             App.load('detail');
+        },
+        '/detail/:id': function(id) {
+            App.load('detail', id);
         }
     });
 });

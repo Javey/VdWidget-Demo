@@ -1,46 +1,22 @@
-define(['vdwidget', 'tpl/base', 'jquery', 'js/components/animateGroup'], function(VdWidget, template, $, AnimateGroup) {
-    var Widget = VdWidget.extend({
+define(['vdwidget', 'jquery'], function(VdWidget, $) {
+    return VdWidget.extend({
         defaults: {
             view: ''
         },
 
         _init: function() {
-            //this.View = VdWidget.extend({template: '<div></div>'});
-            this.AnimateGroup = AnimateGroup;
             this._current = null;
             this._isFirstView = true;
         },
 
-        _create: function() {
-            console.log('app create');
-        },
+        template: '<div class="page">{this.get("view")}</div>',
 
-        _beforeUpdate: function() {
-            console.log('app before update');
-            window.appUpdate = true;
-        },
-
-        _update: function() {
-            console.log('app update');
-            window.appUpdate = false;
-        },
-
-        _destroy: function() {
-            console.log('app destroy');
-        },
-
-        template: '<div>{this.get("view")}</div>',
-
-        load: function(page, id) {
+        load: function(page) {
             var self = this;
+            this._animate();
             require(['js/pages/' + page], this._current = function callee(Widget) {
-                //self._animate();
                 if (callee !== self._current) return;
-                //self.View = Widget;
-                //self.trigger('change')
-                var widget = new Widget({
-                    id: id
-                });
+                var widget = new Widget();
                 if (widget.rendered) {
                     self.set('view', widget);
                 } else {
@@ -75,6 +51,4 @@ define(['vdwidget', 'tpl/base', 'jquery', 'js/components/animateGroup'], functio
             this._isFirstView = false;
         }
     });
-
-    return VdWidget.mount(Widget, $('#page')[0]);
 });
