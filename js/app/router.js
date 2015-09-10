@@ -1,19 +1,19 @@
 define(['director', 'js/app/app'], function(Router, App) {
     return Router({
         '/': function() {
-            App.load('home');
+            App.load('dash');
         },
-        '/test': function() {
-            App.load('test');
+        '/dash': function() {
+            App.load('dash');
         },
-        '/readme': function() {
-            App.load('readme');
+        '/chats': function() {
+            App.load('chats');
         },
-        '/detail': function() {
-            App.load('detail');
+        '/chats/:id': function(id) {
+            App.load('chatDetail', {id: id});
         },
-        '/detail/:id': function(id) {
-            App.load('detail', id);
+        '/account': function() {
+            App.load('account');
         }
     });
 });
