@@ -1,9 +1,13 @@
-define(['vdwidget', 'vdt'], function(VdWidget, Vdt) {
-    var Widget = VdWidget.extend({
+define(['intact', 'vdt'], function(Intact, Vdt) {
+    var Widget = Intact.extend({
         defaults: {
-            view: ''
+            view: '',
+            data: {}
         },
 
+        displayName: 'App',
+
+        // template: Vdt.compile('return this.get("view") && this.get("view")(this.get("data")) || <div>加载中...</div>', {autoReturn: false}),
         template: Vdt.compile('return this.get("view") || <div>加载中...</div>', {autoReturn: false}),
 
         load: function(page, data) {
@@ -11,19 +15,23 @@ define(['vdwidget', 'vdt'], function(VdWidget, Vdt) {
             require(['js/pages/' + page], this._current = function callee(Widget) {
                 if (callee !== self._current) return;
                 var widget = new Widget(data);
-                if (widget.rendered) {
-                    self.set('view', widget);
+                if (widget.inited) {
+                   self.set('view', widget);
                 } else {
-                    widget.on('rendered', function() {
-                        if (callee === self._current) {
-                            self.set('view', widget);
-                        }
-                    });
+                   widget.on('inited', function() {
+                       if (callee === self._current) {
+                           self.set('view', widget);
+                       }
+                   });
                 }
+                // self.set({
+                    // 'view': Widget,
+                    // 'data': data
+                // });
             });
             return this;
         }
     });
 
-    return VdWidget.mount(Widget, document.getElementById('page'));
+    return Intact.mount(Widget, document.getElementById('page'));
 });

@@ -1,5 +1,5 @@
-define(['vdwidget', 'rvdt!tpl/chatDetail.vdt', 'underscore'], function(VdWidget, template, _) {
-    return VdWidget.extend({
+define(['intact', 'tpl/chatDetail', 'underscore'], function(Intact, template, _) {
+    return Intact.extend({
         defaults: {
             chats: [{
                 id: 0,
@@ -28,6 +28,8 @@ define(['vdwidget', 'rvdt!tpl/chatDetail.vdt', 'underscore'], function(VdWidget,
                 face: 'https://pbs.twimg.com/profile_images/578237281384841216/R3ae1n61.png'
             }]
         },
+
+        displayName: 'ChatDetail',
 
         template: template,
 

@@ -1,5 +1,6 @@
-define(['vdwidget', 'rvdt!tpl/chats.vdt'], function(VdWidget, template) {
-    return VdWidget.extend({
+define(['intact', 'tpl/chats'], function(Intact, template) {
+    return Intact.extend({
+        displayName: 'Chats',
         defaults: {
             chats: [{
                 id: 0,

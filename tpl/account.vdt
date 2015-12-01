@@ -1,6 +1,6 @@
-var layout = require('rvdt!tpl/layout.vdt');
+var layout = require('tpl/layout');
 
-<t:layout navIndex="account">
+<t:layout navIndex="account" Animate={Animate}>
     <b:header>
         Account
     </b:header>
@@ -9,7 +9,8 @@ var layout = require('rvdt!tpl/layout.vdt');
             <div class="item item-toggle toggle-small">
                 <div>Enable Friends</div>
                 <label class="toggle disable-user-behavior">
-                    <input type="checkbox" checked={this.get('settings').enableFriends} ev-change={this._change.bind(this)}/>
+                    {console.log(this.get('settings'))}
+                    <input type="checkbox" checked={this.get('settings')} ev-change={this._change.bind(this)}/>
                     <div class="track">
                         <div class="handle"></div>
                     </div>

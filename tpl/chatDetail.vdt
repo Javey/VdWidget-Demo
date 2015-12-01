@@ -1,6 +1,6 @@
-var layout = require('rvdt!tpl/layout.vdt');
+var layout = require('tpl/layout');
 
-<t:layout navIndex="chats" showBack={true}>
+<t:layout navIndex="chats" showBack={true} Animate={Animate}>
     <b:header>
         {this.get('chat').name}
     </b:header>

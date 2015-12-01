@@ -3,7 +3,7 @@ require.config({
 
     paths: {
         vdt: 'bower_components/vdt/dist/vdt',
-        vdwidget: 'bower_components/vdwidget/src/vdWidget',
+        intact: 'bower_components/intact/src/intact',
         underscore: 'bower_components/underscore/underscore',
         director: 'bower_components/director/build/director',
         text: 'bower_components/text/text',

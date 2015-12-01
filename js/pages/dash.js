@@ -1,5 +1,6 @@
-define(['vdwidget', 'rvdt!tpl/dash.vdt'], function(VdWidget, template) {
-    return VdWidget.extend({
+define(['intact', 'tpl/dash'], function(Intact, template) {
+    return Intact.extend({
+        displayName: 'Dash',
         template: template
     });
 });

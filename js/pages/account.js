@@ -1,15 +1,15 @@
-define(['vdwidget', 'rvdt!tpl/account.vdt'], function(VdWidget, template) {
-    return VdWidget.extend({
+define(['intact', 'tpl/account'], function(Intact, template) {
+    return Intact.extend({
         defaults: {
-            settings: {
-                enableFriends: true
-            }
+            settings: true
         },
+
+        displayName: 'Account',
 
         template: template,
 
         _change: function(e) {
-            this.get('settings').enableFriends = e.target.checked;
+            this.set('settings', e.target.checked, {silent: true});
         }
     });
 });

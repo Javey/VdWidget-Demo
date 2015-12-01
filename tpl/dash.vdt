@@ -1,6 +1,6 @@
-var layout = require('rvdt!tpl/layout.vdt');
+var layout = require('tpl/layout');
 
-<t:layout navIndex="dash">
+<t:layout navIndex="dash" Animate={Animate}>
     <b:header>
         Dashboard
     </b:header>
@@ -13,7 +13,7 @@ var layout = require('rvdt!tpl/layout.vdt');
                 </div>
             </div>
             <div class="list card">
-                <div class="item item-divider">Health</div>
+                <div class="item item-divider">Health</div> 
                 <div class="item item-body">
                     You ate an apple today!
                 </div>

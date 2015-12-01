@@ -1,6 +1,6 @@
-var layout = require('rvdt!tpl/layout.vdt');
+var layout = require('tpl/layout');
 
-<t:layout navIndex="chats">
+<t:layout navIndex="chats" Animate={Animate}>
     <b:header>
         Chats
     </b:header>
@@ -15,6 +15,9 @@ var layout = require('rvdt!tpl/layout.vdt');
                             <p>{chat.lastText}</p>
                             <i class="icon ion-chevron-right icon-accessory"></i>
                         </a>
+                        <div class="item-options">
+                            <div class="button-assertive button">Delete</div>
+                        </div>
                     </Animate>
                 })}
             </Animate>
