@@ -1,6 +1,6 @@
 var layout = require('tpl/layout');
 
-<t:layout navIndex="account" Animate={Animate}>
+<t:layout navIndex="account">
     <b:header>
         Account
     </b:header>
@@ -9,7 +9,6 @@ var layout = require('tpl/layout');
             <div class="item item-toggle toggle-small">
                 <div>Enable Friends</div>
                 <label class="toggle disable-user-behavior">
-                    {console.log(this.get('settings'))}
                     <input type="checkbox" checked={this.get('settings')} ev-change={this._change.bind(this)}/>
                     <div class="track">
                         <div class="handle"></div>

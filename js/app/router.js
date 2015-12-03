@@ -14,6 +14,9 @@ define(['director', 'js/app/app'], function(Router, App) {
         },
         '/account': function() {
             App.load('account');
+        },
+        '/sector': function() {
+            App.load('sector');
         }
     });
 });

@@ -1,33 +1,32 @@
 define(['intact', 'vdt'], function(Intact, Vdt) {
+    var cache = {};
     var Widget = Intact.extend({
+        displayName: 'App',
         defaults: {
             view: '',
-            data: {}
+            data: {
+                chatUrl: '#/chats'
+            }
         },
 
-        displayName: 'App',
-
-        // template: Vdt.compile('return this.get("view") && this.get("view")(this.get("data")) || <div>加载中...</div>', {autoReturn: false}),
-        template: Vdt.compile('return this.get("view") || <div>加载中...</div>', {autoReturn: false}),
+        template: Vdt.compile('return this.get("view") || <div class="sk-rotating-plane"></div>', {autoReturn: false}),
 
         load: function(page, data) {
             var self = this;
-            require(['js/pages/' + page], this._current = function callee(Widget) {
+            page = 'js/pages/' + page;
+            require([page], this._current = function callee(Widget) {
                 if (callee !== self._current) return;
-                var widget = new Widget(data);
-                if (widget.inited) {
-                   self.set('view', widget);
-                } else {
-                   widget.on('inited', function() {
-                       if (callee === self._current) {
-                           self.set('view', widget);
-                       }
-                   });
+                if (!cache[page]) {
+                    cache[page] = new Widget(data);
                 }
-                // self.set({
-                    // 'view': Widget,
-                    // 'data': data
-                // });
+                // if the data has changed, then re-fetch data
+                cache[page].set(data, {
+                    silent: true, // we must set silent to prevent the widget from triggering a change event
+                    change: function() {
+                        this._init();
+                    }
+                });
+                self.set('view', cache[page]);
             });
             return this;
         }

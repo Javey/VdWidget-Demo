@@ -1,25 +1,40 @@
-define(['intact', 'tpl/chatDetail', 'underscore', 'js/lib/utils'], function(Intact, template, _, utils) {
+define(['intact', 'tpl/chatDetail', 'underscore', 'js/lib/utils', 'js/app/app'], function(Intact, template, _, utils, App) {
     return Intact.extend({
-        defaults: {
-            chats: []
-        },
-
         displayName: 'ChatDetail',
+        defaults: {
+            chat: {}
+        },
 
         template: template,
 
-        _init: function() {
-            return this._fetch();
+        initialize: function() {
+            App.get('data').chatUrl = '#/chats/' + this.get('id');
         },
 
-        _fetch: function() {
+        _init: function() {
+            this.initialize();
+            this.loaded = false;
+            return this.fetch();
+        },
+
+        _beforeUpdate: function() {
+            this.initialize();
+        },
+
+        fetch: function() {
             return utils.api().then(function(data) {
+                if (App.get('view') !== this) return; // if page has changed, then do nothing
+                this.loaded = true;
                 var chat = _.find(data, function(chat) {
                     return chat.id == this.get('id');
                 }, this);
 
                 this.set('chat', chat);
             }.bind(this));
+        },
+
+        backCallback: function() {
+            location.hash = '#/chats';
         }
     });
 });
